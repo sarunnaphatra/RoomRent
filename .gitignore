@@ -1,0 +1,21 @@
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+/playwright/.auth/
+.venv/
+
+# Sensitive Data
+Testing Data/Config Google Calendar/Google Service Account JSON.txt
+Testing Data/Config Line Telegram Notify/
+Testing Data/Config ตั้งค่าฐานข้อมูล/
+**/*.json
+!package.json
+!package-lock.json
+!jsconfig.json
+!tsconfig.json
+!db-config.json
+!testsprite_tests/**/*.json

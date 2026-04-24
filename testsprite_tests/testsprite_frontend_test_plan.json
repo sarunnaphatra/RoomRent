@@ -1,0 +1,1361 @@
+[
+  {
+    "id": "TC001",
+    "title": "Validation error when check-out date is the same as or before check-in date",
+    "description": "Verifies that the UI prevents booking submission when the check-out date is not after the check-in date and shows the correct validation message.",
+    "category": "Room Booking",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click on a room to view details"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"availability\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on the check-in date field"
+      },
+      {
+        "type": "action",
+        "description": "Select a check-in date from the calendar"
+      },
+      {
+        "type": "action",
+        "description": "Click on the check-out date field"
+      },
+      {
+        "type": "action",
+        "description": "Select a check-out date that is the same as the check-in date or earlier from the calendar"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Submit booking request\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Check-out date must be after check-in date\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC002",
+    "title": "Booking is blocked when selected dates overlap an existing booking",
+    "description": "Verifies that selecting dates that overlap an existing booking blocks submission and shows the \"already booked\" alert message.",
+    "category": "Room Booking",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click on a room to view details"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"availability\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on the check-in date field"
+      },
+      {
+        "type": "action",
+        "description": "Select dates that are marked as overlapping or unavailable in the calendar"
+      },
+      {
+        "type": "action",
+        "description": "Click on the check-out date field"
+      },
+      {
+        "type": "action",
+        "description": "Select a check-out date that keeps the range overlapping an existing booking"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Submit booking request\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"The selected dates are already booked\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC003",
+    "title": "Room details page shows availability calendar before date selection",
+    "description": "Verifies that after selecting a room from the home page, the details view displays an availability calendar to support booking.",
+    "category": "Room Booking",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"available rooms\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on a room to view details"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"room details\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"availability calendar\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"check-in date\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"check-out date\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC004",
+    "title": "Booking request submission is not successful when required dates are missing",
+    "description": "Verifies that the booking request cannot be submitted if check-in and/or check-out dates are not selected and a visible error is shown.",
+    "category": "Room Booking",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click on a room to view details"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"availability calendar\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Submit booking request\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"check-in\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"check-out\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"required\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC005",
+    "title": "Admin login shows admin-specific controls on home page",
+    "description": "Verifies an admin can log in and sees admin-only controls (Add Room) on the home page.",
+    "category": "Admin Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the username input field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password input field"
+      },
+      {
+        "type": "action",
+        "description": "Click the Login button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Add Room\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC006",
+    "title": "Add a new room and verify it appears in the room list",
+    "description": "Verifies an admin can add a room using the Add Room flow and see the newly created room in the list.",
+    "category": "Admin Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the username input field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password input field"
+      },
+      {
+        "type": "action",
+        "description": "Click the Login button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Add Room\" button"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"New Test Room\" into the room name field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Save\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"New Test Room\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC007",
+    "title": "Add room validation: saving with missing required fields shows an error",
+    "description": "Verifies the room details form enforces required fields and blocks saving when incomplete.",
+    "category": "Admin Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the username input field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password input field"
+      },
+      {
+        "type": "action",
+        "description": "Click the Login button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Add Room\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Save\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"required\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Add Room\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC008",
+    "title": "Cancel deletion from confirmation popup leaves room intact",
+    "description": "Verifies canceling the delete confirmation does not remove the room.",
+    "category": "Admin Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the username input field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password input field"
+      },
+      {
+        "type": "action",
+        "description": "Click the Login button"
+      },
+      {
+        "type": "action",
+        "description": "Click on a room from the room list"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Delete room\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Are you sure\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Cancel\" button in the confirmation popup"
+      }
+    ]
+  },
+  {
+    "id": "TC009",
+    "title": "View all bookings and open booking details with payment slip visible",
+    "description": "Verifies an admin can open the bookings list, open a booking by ID, and view the payment slip image.",
+    "category": "Admin Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the username input field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password input field"
+      },
+      {
+        "type": "action",
+        "description": "Click the Login button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"View All Bookings\" control"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Bookings\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click a Booking ID from the list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Payment slip\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC010",
+    "title": "Edit a booking and save updates successfully",
+    "description": "Verifies an admin can edit an existing booking (dates or room) and see a visible confirmation of the update.",
+    "category": "Admin Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the username input field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password input field"
+      },
+      {
+        "type": "action",
+        "description": "Click the Login button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"View All Bookings\" control"
+      },
+      {
+        "type": "action",
+        "description": "Click a Booking ID from the list"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Edit booking\" button"
+      },
+      {
+        "type": "action",
+        "description": "Select a different room from the room dropdown"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Save\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"updated\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC011",
+    "title": "Edit booking validation: invalid date range shows an error and blocks saving",
+    "description": "Verifies the booking edit form prevents saving when the date range is invalid.",
+    "category": "Admin Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the username input field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password input field"
+      },
+      {
+        "type": "action",
+        "description": "Click the Login button"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"View All Bookings\" control"
+      },
+      {
+        "type": "action",
+        "description": "Click a Booking ID from the list"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Edit booking\" button"
+      },
+      {
+        "type": "action",
+        "description": "Fill \"1900-01-01\" into the check-in date field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Save\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Invalid\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC012",
+    "title": "Switch UI language to English from the home page",
+    "description": "Verifies that clicking the EN language button updates visible UI text to English.",
+    "category": "Language Switching",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"EN\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"EN\" language button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"TH\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Available Rooms\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Book\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC013",
+    "title": "Switch UI language to Thai from the home page",
+    "description": "Verifies that clicking the TH language button updates visible UI text to Thai.",
+    "category": "Language Switching",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"TH\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"TH\" language button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"EN\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"ห้องว่าง\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"จอง\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC014",
+    "title": "Switch EN then TH and confirm translations update both ways",
+    "description": "Verifies language switching is reversible and updates the same screen content when toggling back and forth.",
+    "category": "Language Switching",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"EN\" language button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Available Rooms\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"TH\" language button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"ห้องว่าง\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"จอง\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC015",
+    "title": "Language selection persists after page reload (English)",
+    "description": "Verifies the chosen language remains English after reloading the home page.",
+    "category": "Language Switching",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"EN\" language button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Available Rooms\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Available Rooms\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Book\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC016",
+    "title": "Language selection persists after page reload (Thai)",
+    "description": "Verifies the chosen language remains Thai after reloading the home page.",
+    "category": "Language Switching",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"TH\" language button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"ห้องว่าง\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"ห้องว่าง\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"จอง\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC017",
+    "title": "Fallback handling: some labels remain English after switching to Thai",
+    "description": "Verifies the UI can display mixed-language text (missing translations) after switching to Thai without breaking the page.",
+    "category": "Language Switching",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"TH\" language button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"ห้องว่าง\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Book\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"EN\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC018",
+    "title": "Language switch does not remove room list content",
+    "description": "Verifies that switching languages updates labels without removing the visible list/content area on the home page.",
+    "category": "Language Switching",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Available Rooms\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"TH\" language button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"ห้องว่าง\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Room\" is visible"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"EN\" language button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Available Rooms\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC019",
+    "title": "QR Code is displayed immediately after booking submission",
+    "description": "Verifies that submitting a booking leads to a payment step where a QR Code is visibly presented to the user.",
+    "category": "Payment & Receipt",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click on a visible room's \"Book\" or \"Reserve\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Complete booking\" or \"Submit booking\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"QR Code\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Upload payment slip\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC020",
+    "title": "Open upload dialog from payment step",
+    "description": "Verifies that the user can open the payment slip upload dialog from the payment/QR step.",
+    "category": "Payment & Receipt",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click on a visible room's \"Book\" or \"Reserve\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Complete booking\" or \"Submit booking\""
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Upload payment slip\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Upload\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"payment slip file input\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC021",
+    "title": "Submit without selecting a slip shows validation error",
+    "description": "Verifies that attempting to submit the upload form without choosing a file shows a visible validation error and does not proceed to confirmation.",
+    "category": "Payment & Receipt",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /"
+      },
+      {
+        "type": "action",
+        "description": "Click on a visible room's \"Book\" or \"Reserve\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Complete booking\" or \"Submit booking\""
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Upload payment slip\""
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Submit\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Upload failed\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"payment slip file input\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC022",
+    "title": "Customer views their booking history list from Home",
+    "description": "Verifies a logged-in customer can open My Bookings and see a list of their own bookings.",
+    "category": "Booking History & Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the username/email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/\""
+      },
+      {
+        "type": "action",
+        "description": "Click \"My Bookings\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"My Bookings\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"Booking ID\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC023",
+    "title": "Customer opens a booking details page and views receipt and slip section",
+    "description": "Verifies a customer can open a booking from My Bookings and see receipt details and the uploaded slip area.",
+    "category": "Booking History & Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the username/email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click \"My Bookings\""
+      },
+      {
+        "type": "action",
+        "description": "Click the first visible Booking ID in the list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Receipt\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Slip\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC024",
+    "title": "Customer cancels a booking from booking details and confirms removal",
+    "description": "Verifies a customer can cancel one of their bookings and the canceled booking no longer appears in My Bookings.",
+    "category": "Booking History & Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the username/email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click \"My Bookings\""
+      },
+      {
+        "type": "action",
+        "description": "Click the first visible Booking ID in the list"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Cancel booking\""
+      },
+      {
+        "type": "action",
+        "description": "Click \"Confirm\""
+      }
+    ]
+  },
+  {
+    "id": "TC025",
+    "title": "Customer is blocked from viewing a booking that is not theirs (access denied)",
+    "description": "Verifies that attempting to open a booking not owned by the logged-in customer shows an access denied/forbidden error.",
+    "category": "Booking History & Management",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the username/email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click \"My Bookings\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Booking ID\" search field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"NOT-OWNED-BOOKING-ID\" into the \"Booking ID\" search field"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Access denied\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC026",
+    "title": "Customer sees a clear error message when a non-owned booking is requested",
+    "description": "Verifies the UI displays a forbidden/403 style message when access to another user's booking is attempted.",
+    "category": "Booking History & Management",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the username/email field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click \"My Bookings\""
+      },
+      {
+        "type": "action",
+        "description": "Click the first visible Booking ID in the list"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"403\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Forbidden\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC027",
+    "title": "Admin can save valid Database Configuration and sees success message",
+    "description": "Verifies an admin can open Database Configuration, enter valid values, save, and see the success confirmation.",
+    "category": "System Configuration (Admin Only)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Settings\" from the home page"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Database Configuration\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Save\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Configuration saved\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC028",
+    "title": "Admin saving invalid Database Configuration shows connection failed error",
+    "description": "Verifies the UI shows an error message when invalid DB settings are saved.",
+    "category": "System Configuration (Admin Only)",
+    "priority": "High",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Settings\" from the home page"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Database Configuration\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Save\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Connection failed\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC029",
+    "title": "Database Configuration requires all required fields before saving (client-side validation)",
+    "description": "Verifies required-field validation is shown when attempting to save with missing DB fields.",
+    "category": "System Configuration (Admin Only)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Settings\" from the home page"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Database Configuration\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Save\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"required\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC030",
+    "title": "Admin can open Payment Settings page",
+    "description": "Verifies an admin can navigate to Payment Settings from Settings and the page loads.",
+    "category": "System Configuration (Admin Only)",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Settings\" from the home page"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Payment Settings\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Payment\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC031",
+    "title": "Payment Settings shows an existing QR code preview (if configured)",
+    "description": "Verifies the payment settings screen displays a visible QR code/preview element for the current configuration.",
+    "category": "System Configuration (Admin Only)",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Settings\" from the home page"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Payment Settings\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify element \"QR code\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC032",
+    "title": "Database Configuration cancel/back returns to Settings without saving",
+    "description": "Verifies the admin can leave Database Configuration using a back/cancel control and return to Settings.",
+    "category": "System Configuration (Admin Only)",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Login\" button"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Settings\" from the home page"
+      },
+      {
+        "type": "action",
+        "description": "Click \"Database Configuration\""
+      },
+      {
+        "type": "action",
+        "description": "Click the \"Back\" or \"Cancel\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Settings\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC033",
+    "title": "Calendar event details are shown in UI log/audit view after confirmation",
+    "description": "Verifies that the UI shows event metadata (e.g., created/synced indicator) including customer name and phone referenced in the event description.",
+    "category": "Integrations: Google Calendar & Notifications",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/\""
+      },
+      {
+        "type": "action",
+        "description": "Click on \"My Bookings\" or \"Bookings\" from the main navigation"
+      },
+      {
+        "type": "action",
+        "description": "Click on the most recent confirmed booking"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Calendar event created\" is visible"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Phone\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC034",
+    "title": "Notification logs show a success status for a specific booking notification",
+    "description": "Verifies that a specific notification entry includes booking details and shows a visible delivered/success state in the UI logs.",
+    "category": "Integrations: Google Calendar & Notifications",
+    "priority": "Medium",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/\""
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Admin\" or \"Admin Panel\" in the navigation (if visible)"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Notifications\" or \"Notification Logs\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Success\" is visible"
+      }
+    ]
+  },
+  {
+    "id": "TC035",
+    "title": "Admin log entries for integrations are visible and readable (calendar + notifications)",
+    "description": "Verifies that the UI provides a visible log area where integration outcomes for calendar creation and notifications can be reviewed.",
+    "category": "Integrations: Google Calendar & Notifications",
+    "priority": "Low",
+    "steps": [
+      {
+        "type": "action",
+        "description": "Navigate to /login"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_USER}}\" into the email/username field"
+      },
+      {
+        "type": "action",
+        "description": "Type \"{{LOGIN_PASSWORD}}\" into the password field"
+      },
+      {
+        "type": "action",
+        "description": "Click on the \"Login\" button"
+      },
+      {
+        "type": "assertion",
+        "description": "Verify URL contains \"/\""
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Admin\" or \"Admin Panel\" in the navigation (if visible)"
+      },
+      {
+        "type": "action",
+        "description": "Click on \"Logs\" or \"Activity Log\""
+      },
+      {
+        "type": "assertion",
+        "description": "Verify text \"Google Calendar\" is visible"
+      }
+    ]
+  }
+]

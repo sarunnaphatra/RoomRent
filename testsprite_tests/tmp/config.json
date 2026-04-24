@@ -1,0 +1,17 @@
+{
+  "status": "init",
+  "type": "frontend",
+  "scope": "codebase",
+  "localEndpoint": "http://localhost:4433/",
+  "loginUser": "admin",
+  "loginPassword": "password",
+  "executionArgs": {
+    "projectName": "Demo-room",
+    "projectPath": "g:\\WorkSpace\\Demo-room",
+    "testIds": [],
+    "additionalInstruction": "Run all tests in headless mode on port 4455",
+    "envs": {
+      "API_KEY": "sk-user-FwNuo1-fo-Usyl_oEuTpWOSHnx8XAQx8y8eggN4qBD4WxG8Muv0thj0F5jWVfZLFffyJon_rReIsnH7cjb0Ft1WwcBdxsReiykRfeagnZeG3vt0LmS3NgifcLKcnyfZGhvM"
+    }
+  }
+}

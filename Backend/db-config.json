@@ -1,0 +1,6 @@
+{
+  "host": "PEPPER",
+  "user": "sa",
+  "password": "123456",
+  "database": "room_booking_db"
+}
